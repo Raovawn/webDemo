@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 引入 Bootstrap -->
-<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
 <title>Insert title here</title>
 </head>
 <body>
@@ -15,14 +15,29 @@
 <th>ID</th>
 <th>名称</th>
 <th>性别</th>
+<th>操作</th>
 <tr>
-<tr>
-<td>${user.id}</td>
-<td>${user.employeeName}</td>
-<td>
-    <c:if test="${user.gender == 1}">男</c:if><c:if test="${user.gender==0}">女</c:if>
-</td>
-<tr>
+<c:forEach items="${users}" var="user">
+    <tr>
+        <td>${user.id}</td>
+        <td>${user.employeeName}</td>
+        <td>
+            <c:if test="${user.gender == 1}">男</c:if><c:if test="${user.gender==0}">女</c:if>
+        </td>
+         <td>
+            <a>修改</a>|<a>删除</a>
+        </td>
+    <tr>
+	</c:forEach>
 </table>
+<!-- <ul class="pagination">
+	<li><a href="#">&laquo;</a></li>
+	<li><a href="#">1</a></li>
+	<li><a href="#">2</a></li>
+	<li><a href="#">3</a></li>
+	<li><a href="#">4</a></li>
+	<li><a href="#">5</a></li>
+	<li><a href="#">&raquo;</a></li>
+</ul> -->
 </body>
 </html>

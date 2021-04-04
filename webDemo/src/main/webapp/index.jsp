@@ -4,11 +4,11 @@
 
 <html>
 <head>
-<!-- 引入jQuery -->
-<script type="text/javascript" src="scripts/jquery-1.8.2.min.js"></script>
+<!-- 引入jQuery,引入全局路径 -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/jquery-1.8.2.min.js"></script>
 <!-- 引入脚本 -->
 <script type="text/javascript">
-    $(function(){
+   /*  $(function(){
     	$("#btn").click(function(){
     		alert("你好，雪!");	
     		//延迟1s
@@ -17,12 +17,14 @@
     		}, 1000);
     	
     	});
-    })
+    }) */
 </script>
 </head>
 
 <body>
 <!-- 正文 -->
-<button id="btn">点击</button>
+<!-- <button id="btn">点击</button> -->
+<a href="insertUser">新增用户</a>
+<a href="selectAllUsers">查找所有的用户</a>
 </body>
 </html>

@@ -1,0 +1,5 @@
+//修改Tomcat中默认端口号的方法：双击Tomcat图标，打开ports页签，修改HTTP/1.1选项后面的值，重启Tomcat服务器
+Spring MVC 是一个模型 - 视图 - 控制器（MVC）的Web框架，
+建立在中央前端控制器servlet（DispatcherServlet），
+它负责发送每个请求到合适的处理程序
+使用视图来最终返回响应结果的概念

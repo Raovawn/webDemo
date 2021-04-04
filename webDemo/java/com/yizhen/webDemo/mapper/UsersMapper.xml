@@ -13,9 +13,9 @@
     </select>
     
     <!-- 查询所有记录 -->
-    <select id="queryUser" resultType="User">
+    <select id="queryUser" resultMap="UserMap">
         <![CDATA[
-            select id,employee_name 'employeeName',gender from tb_employee 
+            select id,employee_name,gender from tb_employee 
         ]]>
     </select>
     
