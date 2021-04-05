@@ -23,4 +23,22 @@ public interface UserDao {
 	 * @return
 	 */
 	public List<User> selectAllUsers();
+	
+	/**
+	 * 新增用户
+	 * @param user
+	 */
+	public void saveUser(User user);
+	
+	/**
+	 * 更新用户
+	 * @param user
+	 */
+	public void updateUser(User user);
+	
+	/**
+	 * 删除好友
+	 * @param id
+	 */
+	public void deleteUser(String id);
 }

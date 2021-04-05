@@ -10,34 +10,38 @@
 <title>Insert title here</title>
 </head>
 <body>
+<table>
+	<tr>
+	    <td>姓名</td>
+	    <td><input id="employeeName" type="text" value="${user.employeeName}"></input></td>
+	    <td>性别</td>
+	    <td> 
+	        <select id="gender" >
+	            <option value="1">男</option>   
+	            <option value="0">女</option> 
+	        </select>
+	    </td>
+	    <td><a>查询</a>|<a>重置</a>|<a href="${pageContext.request.contextPath}/userModel/insertUser.jsp">新增</a></td>
+	</tr>
+</table>
+
 <table class="table">
 <tr>
-<th>ID</th>
 <th>名称</th>
 <th>性别</th>
 <th>操作</th>
 <tr>
 <c:forEach items="${users}" var="user">
     <tr>
-        <td>${user.id}</td>
         <td>${user.employeeName}</td>
         <td>
             <c:if test="${user.gender == 1}">男</c:if><c:if test="${user.gender==0}">女</c:if>
         </td>
          <td>
-            <a>修改</a>|<a>删除</a>
+            <a href="${pageContext.request.contextPath}/userModel/selectUser?id=${user.id}">修改</a>|<a href="${pageContext.request.contextPath}/userModel/deleteUser?id=${user.id}">删除</a>
         </td>
     <tr>
 	</c:forEach>
 </table>
-<!-- <ul class="pagination">
-	<li><a href="#">&laquo;</a></li>
-	<li><a href="#">1</a></li>
-	<li><a href="#">2</a></li>
-	<li><a href="#">3</a></li>
-	<li><a href="#">4</a></li>
-	<li><a href="#">5</a></li>
-	<li><a href="#">&raquo;</a></li>
-</ul> -->
 </body>
 </html>

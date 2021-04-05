@@ -22,14 +22,14 @@
     <!-- 更新一条记录 -->
     <update id="updateOneUser"  parameterType="User">
         <![CDATA[
-            update tb_employee set employee_name = #{employee_name},gender=#{gender} where id=#{id}
+            update tb_employee set employee_name = #{employeeName},gender=#{gender} where id=#{id}
         ]]>
     </update>
     
     <!-- 新增一条记录 -->
     <insert id="addOneUser"  parameterType="User" useGeneratedKeys="true" keyProperty="id">
         <![CDATA[
-            insert into tb_employee(id,gender,employee_name) values(#{id},#{gender},#{employee_name})
+            insert into tb_employee(id,gender,employee_name) values(#{id},#{gender},#{employeeName})
         ]]>
     </insert>
     

@@ -25,6 +25,19 @@ public class UserDaoImpl implements UserDao {
 		 List<User> users =  sqlSessionTempalte.selectList("queryUser");		
 			return users;
 	}
-	 
-	 
+
+	public void saveUser(User user) {
+		sqlSessionTempalte.insert("addOneUser",user);	
+	}
+
+	public void deleteUser(String id) {
+		sqlSessionTempalte.delete("deleteOneUser",id);	
+	}
+
+	public void updateUser(User user) {
+		sqlSessionTempalte.insert("updateOneUser",user);	
+	}
+	
+	
+	
 }

@@ -8,23 +8,12 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/scripts/jquery-1.8.2.min.js"></script>
 <!-- 引入脚本 -->
 <script type="text/javascript">
-   /*  $(function(){
-    	$("#btn").click(function(){
-    		alert("你好，雪!");	
-    		//延迟1s
-    		setTimeout(function(){
-    			alert("你好!");	
-    		}, 1000);
-    	
-    	});
-    }) */
 </script>
 </head>
 
 <body>
 <!-- 正文 -->
 <!-- <button id="btn">点击</button> -->
-<a href="insertUser">新增用户</a>
-<a href="selectAllUsers">查找所有的用户</a>
+<a href="userModel/selectAllUsers">用户模块</a>
 </body>
 </html>
