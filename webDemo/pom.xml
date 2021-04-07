@@ -150,8 +150,14 @@
     <artifactId>jstl</artifactId>
     <version>1.2</version>
 </dependency>
-  </dependencies>
-  <build>
+<!-- 分页插件 -->
+<dependency>
+    <groupId>com.github.pagehelper</groupId>
+    <artifactId>pagehelper</artifactId>
+    <version>5.0.0</version>
+</dependency>
+</dependencies>
+<build>
     <finalName>webDemo</finalName>
-  </build>
+</build>
 </project>

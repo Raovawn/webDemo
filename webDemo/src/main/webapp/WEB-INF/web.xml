@@ -11,11 +11,18 @@
     <param-value>classpath:applicationContext-SpringMvc.xml</param-value>  
 </context-param>  
 
-<!-- 配置监听器 -->
- <listener>
+<!-- 配置Spring监听器，加载环境 -->
+<!--  <listener>
        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
- </listener>
-
+ </listener> -->
+<!-- 配置自定义监听器,该类继承了ContextLoaderListener，也就意味着同时监听了父类,ServletContextListener只负责监听web容器
+     启动和关闭的事件 -->
+<listener>
+    <listener-class>com.yizhen.webDemo.listener.MyContextListener</listener-class>
+</listener>
+<listener>
+    <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+</listener>
 <!-- 配置Servlet,前置控制器 -->    
 <servlet>
    <servlet-name>spring-mvc</servlet-name>
@@ -25,9 +32,25 @@
             <param-value>classpath:applicationContext-SpringMvc.xml</param-value>  
    </init-param>  
 </servlet>
-
  <servlet-mapping>
        <servlet-name>spring-mvc</servlet-name>
        <url-pattern>/</url-pattern>
  </servlet-mapping>
+ <!-- 配置过滤器,处理乱码 -->
+ <filter>
+    <filter-name>encodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>encodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping> 
 </web-app>
