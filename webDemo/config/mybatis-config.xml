@@ -5,9 +5,12 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-   <!-- 类的别名 -->
-   <typeAliases>
-        <typeAlias alias="User" type="com.yizhen.webDemo.entity.User" />
-    </typeAliases>
-    
+     <settings>
+          <!-- 打印查询语句 -->
+          <setting name="logImpl" value="STDOUT_LOGGING" />
+     </settings>
+	 <!-- 类的别名 -->
+	 <typeAliases>
+	     <typeAlias alias="User" type="com.yizhen.webDemo.entity.User" />
+	 </typeAliases>
 </configuration>

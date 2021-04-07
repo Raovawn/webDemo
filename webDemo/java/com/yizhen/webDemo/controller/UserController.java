@@ -3,6 +3,8 @@ package com.yizhen.webDemo.controller;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.UUID;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +17,24 @@ import com.yizhen.webDemo.service.UserService;
 
 
 @Controller
+@RequestMapping("/userModel")
 public class UserController {
-	//private Logger logger = LoggerFactory.getLogger(UserController.class);
+	private Logger logger = LoggerFactory.getLogger(UserController.class);
 	@Autowired
 	private UserService userService;
+	
+	@ModelAttribute
+	public User get(@RequestParam(required=false) String id) {
+		User entity = null;
+		if (id != null && id.trim().length() > 0){
+			entity = userService.selectUser(id);
+		}
+		if (entity == null){
+			entity = new User();
+		}
+		return entity;
+	}
+	
 	
 	/**
 	 * 查询指定的一个用户
@@ -27,14 +43,9 @@ public class UserController {
 	 * @return
 	 * @throws SQLException
 	 */
-	@RequestMapping("/userModel/selectUser")
-	public String selectUser(@RequestParam(required=false) String id, Model model) throws SQLException{
-		if(id!= null) {
-			User user = userService.selectUser(id);
-			model.addAttribute("user", user);	
-		}else {
-			
-		}		
+	@RequestMapping("/selectUser")
+	public String selectUser(User user, Model model) throws SQLException{
+	    model.addAttribute("user", user);	
 		return "userModel/insertUser";
 	}
 	
@@ -44,9 +55,10 @@ public class UserController {
 	 * @return
 	 * @throws SQLException
 	 */
-	@RequestMapping("/userModel/selectAllUsers")
-	public String selectAllUsers(Model model) throws SQLException{
-		List<User> users = userService.selectAllUsers();
+	@RequestMapping("/selectAllUsers")
+	public String selectAllUsers(Model model,@ModelAttribute(value="user") User user) throws SQLException{
+		logger.info("查询条件" + user);
+		List<User> users = userService.selectAllUsers(user);
 		model.addAttribute("users", users);
 		return "userModel/selectUser";
 	}
@@ -54,15 +66,16 @@ public class UserController {
 	/**
 	 * 新增/修改用户信息
 	 */
-	@RequestMapping("/userModel/insertUser")
-	public void insertUser(@ModelAttribute(value="user") User user) throws SQLException{
-		if(user.getId() == null) {
+	@RequestMapping("/insertUser")
+	public String insertUser(@ModelAttribute(value="user") User user) throws SQLException{
+		if(user.getId() == null || user.getId().trim().length() <= 0) {
 	        String id = UUID.randomUUID().toString().replace("-", "");
 			user.setId(id);
 			userService.saveUser(user);
 		}else {
 	        userService.updateUser(user);
-		}		
+		}
+		return "redirect:/userModel/selectAllUsers";
 	}
 	
 	/**
@@ -71,7 +84,7 @@ public class UserController {
 	 * @return
 	 * @throws SQLException
 	 */
-	@RequestMapping("/userModel/deleteUser")
+	@RequestMapping("/deleteUser")
 	public String insertUser(@RequestParam(required=false) String id) throws SQLException{
 		userService.deleteUser(id);
 		return "redirect:/userModel/selectAllUsers";

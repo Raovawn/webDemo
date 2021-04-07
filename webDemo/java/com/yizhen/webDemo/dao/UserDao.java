@@ -20,9 +20,10 @@ public interface UserDao {
 	
 	/**
 	 * 查询所用的用户
+	 * @param user
 	 * @return
 	 */
-	public List<User> selectAllUsers();
+	public List<User> selectAllUsers(User user);
 	
 	/**
 	 * 新增用户

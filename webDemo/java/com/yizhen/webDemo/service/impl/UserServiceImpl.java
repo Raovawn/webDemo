@@ -18,8 +18,8 @@ public class UserServiceImpl implements UserService {
 		return userDao.selectUser(id);
 	}
 
-	public List<User> selectAllUsers() {
-		return userDao.selectAllUsers();
+	public List<User> selectAllUsers(User user) {
+		return userDao.selectAllUsers(user);
 	}
 
 	public void updateUser(User user) {

@@ -21,8 +21,8 @@ public class UserDaoImpl implements UserDao {
 			return user;
 	 }
 
-	public List<User> selectAllUsers() {
-		 List<User> users =  sqlSessionTempalte.selectList("queryUser");		
+	public List<User> selectAllUsers(User user) {
+		 List<User> users =  sqlSessionTempalte.selectList("queryUser",user);		
 			return users;
 	}
 

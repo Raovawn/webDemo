@@ -15,9 +15,10 @@ public interface UserService {
 	
 	/**
 	 * 查询所有的用户
+	 * @param user
 	 * @return
 	 */
-	public List<User> selectAllUsers();
+	public List<User> selectAllUsers(User user);
 	
 	/**
 	 * 更新用户
